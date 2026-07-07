@@ -146,7 +146,7 @@
       </div>`;
     }).join('');
     display.querySelectorAll('.color-block').forEach(block => {
-      block.addEventListener('click', () => copyToClipboard(block.dataset.hex, block));
+      block.addEventListener('click', () => { copyToClipboard(block.dataset.hex, block); trackEvent('copy_color'); });
     });
   }
 
@@ -331,6 +331,7 @@
   // 复制导出
   document.getElementById('exportCopyBtn').addEventListener('click', () => {
     copyToClipboard(document.getElementById('exportCode').textContent);
+    trackEvent('export_palette');
   });
   // 随机
   document.getElementById('randomBtn').addEventListener('click', () => {
